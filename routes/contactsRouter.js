@@ -1,15 +1,15 @@
 import express from "express";
+import contactsControllers from "../controllers/contactsControllers.js";
+import validateBody from "../midleware/validateBody.js";
+import { createContactSchema } from "../schemas/contactsSchemas.js";
 
-import {
+const {
   getAllContacts,
   getOneContact,
   deleteContact,
   createContact,
   updateContact,
-} from "../controllers/contactsControllers.js";
-
-import validateBody from "../../midleware/validateBody.js";
-import { createContactSchema } from "../../schemas/contactsSchemas.js";
+} = contactsControllers;
 
 const contactsRouter = express.Router();
 
