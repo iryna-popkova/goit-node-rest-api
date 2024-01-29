@@ -3,7 +3,7 @@ import HttpError from "../helpers/HttpError.js";
 import ctrlWrapper from "../helpers/ctrlWrapper.js";
 
 const getAllContacts = async (req, res) => {
-  const result = await Contact.find(({}, "-createdAt -updatedAt"));
+  const result = await Contact.find({}, "-createdAt");
   res.json(result);
 };
 
