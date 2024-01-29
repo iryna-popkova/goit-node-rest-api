@@ -1,15 +1,11 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-
+import { DB_HOST } from "./config.js";
 import contactsRouter from "./routes/contactsRouter.js";
 import mongoose from "mongoose";
 
-//6Hs9ifpI0WiK1hEu
-
-const DB_HOST =
-  "mongodb+srv://Iryna:6Hs9ifpI0WiK1hEu@cluster0.ihchbuc.mongodb.net/db-contacts?retryWrites=true&w=majority";
-
+const { DB_HOST } = process.env;
 const app = express();
 
 app.use(morgan("tiny"));
