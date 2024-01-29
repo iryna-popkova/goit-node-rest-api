@@ -3,6 +3,12 @@ import morgan from "morgan";
 import cors from "cors";
 
 import contactsRouter from "./routes/contactsRouter.js";
+import mongoose from "mongoose";
+
+//6Hs9ifpI0WiK1hEu
+
+const DB_HOST =
+  "mongodb+srv://Iryna:6Hs9ifpI0WiK1hEu@cluster0.ihchbuc.mongodb.net/db-contacts?retryWrites=true&w=majority";
 
 const app = express();
 
@@ -21,6 +27,12 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message });
 });
 
-app.listen(3000, () => {
-  console.log("Server is running. Use our API on port: 3000");
-});
+mongoose
+  .connect(DB_HOST)
+  .then(() => {
+    app.listen(3000);
+  })
+  .catch((error) => {
+    console.log(error.message);
+    process.exit(1);
+  });
