@@ -1,9 +1,9 @@
-import express from "express";
-import morgan from "morgan";
-import cors from "cors";
-import contactsRouter from "./routes/contactsRouter.js";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
+const express = require("express");
+const morgan = require("morgan");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const mongoose = require("mongoose");
+const contactsRouter = require("./routes/contactsRouter.js");
 
 dotenv.config();
 const { DB_HOST } = process.env;

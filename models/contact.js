@@ -1,5 +1,5 @@
-import { Schema, model } from "mongoose";
-import handleMongoooseError from "../midleware/handleMongooseError.js";
+const { Schema, model } = require("mongoose");
+const { handleMongooseError } = require("../midleware/index.js");
 
 const contactShema = new Schema(
   {
@@ -23,8 +23,8 @@ const contactShema = new Schema(
   { versionKey: false }
 );
 
-contactShema.post("save", handleMongoooseError);
+contactShema.post("save", handleMongooseError);
 
 const Contact = model("contact", contactShema);
 
-export default Contact;
+module.exports = Contact;

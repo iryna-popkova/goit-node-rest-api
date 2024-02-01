@@ -1,9 +1,8 @@
 {
   "name": "goit-node-rest-api",
-  "type": "module",
   "scripts": {
-    "start": "node ./app.js",
-    "dev": "nodemon ./app.js"
+    "start": "node app",
+    "dev": "nodemon app"
   },
   "dependencies": {
     "cors": "^2.8.5",
