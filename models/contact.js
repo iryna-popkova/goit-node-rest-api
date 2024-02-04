@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const { handleMongooseError } = require("../midleware/index.js");
+const Joi = require("joi");
 
 const contactShema = new Schema(
   {
@@ -19,6 +20,10 @@ const contactShema = new Schema(
       type: Boolean,
       default: false,
     },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
   },
   { versionKey: false }
 );
@@ -27,4 +32,19 @@ contactShema.post("save", handleMongooseError);
 
 const Contact = model("contact", contactShema);
 
-module.exports = Contact;
+const createContactSchema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().required(),
+  phone: Joi.number().required(),
+  favorite: Joi.boolean(),
+});
+
+const updataFavoriteSchema = Joi.object({
+  favorite: Joi.boolean().required(),
+});
+
+module.exports = {
+  createContactSchema,
+  updataFavoriteSchema,
+  Contact,
+};

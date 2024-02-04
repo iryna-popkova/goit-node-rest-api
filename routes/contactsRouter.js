@@ -5,7 +5,7 @@ const { validateBody, isValidId } = require("../midleware/index.js");
 const {
   createContactSchema,
   updataFavoriteSchema,
-} = require("../schemas/contactsSchemas.js");
+} = require("../models/contact.js");
 
 const {
   getAllContacts,
