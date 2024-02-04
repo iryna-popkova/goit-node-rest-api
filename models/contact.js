@@ -30,8 +30,6 @@ const contactShema = new Schema(
 
 contactShema.post("save", handleMongooseError);
 
-const Contact = model("contact", contactShema);
-
 const createContactSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().required(),
@@ -42,6 +40,8 @@ const createContactSchema = Joi.object({
 const updataFavoriteSchema = Joi.object({
   favorite: Joi.boolean().required(),
 });
+
+const Contact = model("contact", contactShema);
 
 module.exports = {
   createContactSchema,
