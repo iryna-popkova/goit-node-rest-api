@@ -46,6 +46,5 @@ const Contact = model("contact", contactShema);
 module.exports = {
   createContactSchema,
   updataFavoriteSchema,
+  Contact,
 };
-
-module.exports = Contact;
