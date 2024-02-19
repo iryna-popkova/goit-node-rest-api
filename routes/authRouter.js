@@ -7,9 +7,10 @@ const {
   login,
   getCurrent,
   logout,
+  updateAvatar,
 } = require("../controllers/index.js");
 
-const { validateBody, authenticate } = require("../midleware");
+const { validateBody, authenticate, upload } = require("../midleware");
 
 const { schemas } = require("../models/user.js");
 
@@ -27,5 +28,10 @@ authRouter.post(
 );
 authRouter.get("/current", authenticate, ctrlWrapper(getCurrent));
 authRouter.post("/logout", authenticate, ctrlWrapper(logout));
-
+authRouter.patch(
+  "/avatars",
+  authenticate,
+  upload.single("avatar"),
+  ctrlWrapper(updateAvatar)
+);
 module.exports = authRouter;
