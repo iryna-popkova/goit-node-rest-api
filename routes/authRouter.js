@@ -8,6 +8,8 @@ const {
   getCurrent,
   logout,
   updateAvatar,
+  resendVerifyEmail,
+  verifyEmail,
 } = require("../controllers/index.js");
 
 const { validateBody, authenticate, upload } = require("../midleware");
@@ -21,6 +23,15 @@ authRouter.post(
   validateBody(schemas.registerSchema),
   ctrlWrapper(register)
 );
+
+authRouter.get("/verify/:verificationToken", ctrlWrapper(verifyEmail));
+
+authRouter.post(
+  "/verify",
+  validateBody(schemas.verifySchema),
+  ctrlWrapper(resendVerifyEmail)
+);
+
 authRouter.post(
   "/login",
   validateBody(schemas.loginSchema),
